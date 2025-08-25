@@ -33,3 +33,10 @@ This project implements a hybrid IDS that:
 **Flow Classifier**: 98.25% accuracy with comprehensive attack type analysis
 
 ## 🏗️ Project Structure
+572project/
+├── data/                    # Dataset files and processed data
+├── deliverables/           # Final project deliverables
+├── report/                # Project documentation and reports
+├── screenshots/           # Visualizations and result screenshots
+├── src/                   # Source code and implementation
+└── README.md              # This file
