@@ -1,0 +1,395 @@
+AUTOENCODER + HYBRID MODEL PREPROCESSING REPORT
+======================================================================
+
+🎯 AUTOENCODER-SPECIFIC DESIGN DECISIONS:
+--------------------------------------------------
+• Autoencoder Training: NORMAL data only (unsupervised anomaly detection)
+• Scaling: Optimized for autoencoder input sensitivity
+• Outlier Handling: Percentile clipping to preserve reconstruction patterns
+• Feature Filtering: Removed zero variance and highly correlated features
+• Categorical Encoding: Mixed approach based on cardinality
+• Dataset Splits: Separate sets for autoencoder and hybrid model training
+
+📊 PREPROCESSING PIPELINE STEPS:
+--------------------------------------------------
+1. Data Analysis: Analyzed dataset: 200,000 normal, 6,200 attack samples
+
+2. Missing Values: Filled 9278 categorical missing values in 'src_ip' with mode
+
+3. Missing Values: Filled 9278 categorical missing values in 'dst_ip' with mode
+
+4. Missing Values: Filled 196472 numeric missing values in 'dns_query_type' with median
+
+5. Missing Values: Filled 5254 numeric missing values in 'jitter' with median
+
+6. Missing Values: Filled 28107 numeric missing values in 'stream_1_var' with median
+
+7. Missing Values: Filled 9278 numeric missing values in 'src_ip_1_count' with median
+
+8. Missing Values: Filled 9278 numeric missing values in 'src_ip_1_mean' with median
+
+9. Missing Values: Filled 40385 numeric missing values in 'src_ip_1_var' with median
+
+10. Missing Values: Filled 38944 numeric missing values in 'src_ip_mac_1_var' with median
+
+11. Missing Values: Filled 26780 numeric missing values in 'channel_1_var' with median
+
+12. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_1_sum' with median
+
+13. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_1_mean' with median
+
+14. Missing Values: Filled 32865 numeric missing values in 'stream_jitter_1_var' with median
+
+15. Missing Values: Filled 18932 numeric missing values in 'stream_5_var' with median
+
+16. Missing Values: Filled 9278 numeric missing values in 'src_ip_5_count' with median
+
+17. Missing Values: Filled 9278 numeric missing values in 'src_ip_5_mean' with median
+
+18. Missing Values: Filled 25879 numeric missing values in 'src_ip_5_var' with median
+
+19. Missing Values: Filled 21125 numeric missing values in 'src_ip_mac_5_var' with median
+
+20. Missing Values: Filled 18421 numeric missing values in 'channel_5_var' with median
+
+21. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_5_sum' with median
+
+22. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_5_mean' with median
+
+23. Missing Values: Filled 23787 numeric missing values in 'stream_jitter_5_var' with median
+
+24. Missing Values: Filled 12777 numeric missing values in 'stream_10_var' with median
+
+25. Missing Values: Filled 9278 numeric missing values in 'src_ip_10_count' with median
+
+26. Missing Values: Filled 9278 numeric missing values in 'src_ip_10_mean' with median
+
+27. Missing Values: Filled 16910 numeric missing values in 'src_ip_10_var' with median
+
+28. Missing Values: Filled 10385 numeric missing values in 'src_ip_mac_10_var' with median
+
+29. Missing Values: Filled 9176 numeric missing values in 'channel_10_var' with median
+
+30. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_10_sum' with median
+
+31. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_10_mean' with median
+
+32. Missing Values: Filled 17644 numeric missing values in 'stream_jitter_10_var' with median
+
+33. Missing Values: Filled 9357 numeric missing values in 'stream_30_var' with median
+
+34. Missing Values: Filled 9278 numeric missing values in 'src_ip_30_count' with median
+
+35. Missing Values: Filled 9278 numeric missing values in 'src_ip_30_mean' with median
+
+36. Missing Values: Filled 11789 numeric missing values in 'src_ip_30_var' with median
+
+37. Missing Values: Filled 3410 numeric missing values in 'src_ip_mac_30_var' with median
+
+38. Missing Values: Filled 3737 numeric missing values in 'channel_30_var' with median
+
+39. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_30_sum' with median
+
+40. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_30_mean' with median
+
+41. Missing Values: Filled 14233 numeric missing values in 'stream_jitter_30_var' with median
+
+42. Missing Values: Filled 8036 numeric missing values in 'stream_60_var' with median
+
+43. Missing Values: Filled 9278 numeric missing values in 'src_ip_60_count' with median
+
+44. Missing Values: Filled 9278 numeric missing values in 'src_ip_60_mean' with median
+
+45. Missing Values: Filled 10331 numeric missing values in 'src_ip_60_var' with median
+
+46. Missing Values: Filled 1471 numeric missing values in 'src_ip_mac_60_var' with median
+
+47. Missing Values: Filled 1982 numeric missing values in 'channel_60_var' with median
+
+48. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_60_sum' with median
+
+49. Missing Values: Filled 5254 numeric missing values in 'stream_jitter_60_mean' with median
+
+50. Missing Values: Filled 12917 numeric missing values in 'stream_jitter_60_var' with median
+
+51. Outlier Handling: Clipped 2061 outliers in 'stream' using 1-99 percentiles
+
+52. Outlier Handling: Clipped 1938 outliers in 'src_port' using 1-99 percentiles
+
+53. Outlier Handling: Clipped 2042 outliers in 'dst_port' using 1-99 percentiles
+
+54. Outlier Handling: Clipped 4124 outliers in 'inter_arrival_time' using 1-99 percentiles
+
+55. Outlier Handling: Clipped 3495 outliers in 'time_since_previously_displayed_frame' using 1-99 percentiles
+
+56. Outlier Handling: Clipped 1743 outliers in 'eth_size' using 1-99 percentiles
+
+57. Outlier Handling: Clipped 1730 outliers in 'tcp_window_size' using 1-99 percentiles
+
+58. Outlier Handling: Clipped 2062 outliers in 'payload_entropy' using 1-99 percentiles
+
+59. Outlier Handling: Clipped 1153 outliers in 'handshake_cipher_suites_length' using 1-99 percentiles
+
+60. Outlier Handling: Clipped 1153 outliers in 'handshake_extensions_length' using 1-99 percentiles
+
+61. Outlier Handling: Clipped 534 outliers in 'handshake_sig_hash_alg_len' using 1-99 percentiles
+
+62. Outlier Handling: Clipped 602 outliers in 'http_response_code' using 1-99 percentiles
+
+63. Outlier Handling: Clipped 1304 outliers in 'dns_query_type' using 1-99 percentiles
+
+64. Outlier Handling: Clipped 1595 outliers in 'dns_len_qry' using 1-99 percentiles
+
+65. Outlier Handling: Clipped 2062 outliers in 'dns_interval' using 1-99 percentiles
+
+66. Outlier Handling: Clipped 1355 outliers in 'dns_len_ans' using 1-99 percentiles
+
+67. Outlier Handling: Clipped 1286 outliers in 'payload_length' using 1-99 percentiles
+
+68. Outlier Handling: Clipped 557 outliers in 'http_content_len' using 1-99 percentiles
+
+69. Outlier Handling: Clipped 1087 outliers in 'icmp_type' using 1-99 percentiles
+
+70. Outlier Handling: Clipped 1014 outliers in 'icmp_data_size' using 1-99 percentiles
+
+71. Outlier Handling: Clipped 2304 outliers in 'jitter' using 1-99 percentiles
+
+72. Outlier Handling: Clipped 2044 outliers in 'stream_1_count' using 1-99 percentiles
+
+73. Outlier Handling: Clipped 2391 outliers in 'stream_1_mean' using 1-99 percentiles
+
+74. Outlier Handling: Clipped 2062 outliers in 'stream_1_var' using 1-99 percentiles
+
+75. Outlier Handling: Clipped 2054 outliers in 'src_ip_1_count' using 1-99 percentiles
+
+76. Outlier Handling: Clipped 2406 outliers in 'src_ip_1_mean' using 1-99 percentiles
+
+77. Outlier Handling: Clipped 2061 outliers in 'src_ip_1_var' using 1-99 percentiles
+
+78. Outlier Handling: Clipped 2054 outliers in 'src_ip_mac_1_count' using 1-99 percentiles
+
+79. Outlier Handling: Clipped 2408 outliers in 'src_ip_mac_1_mean' using 1-99 percentiles
+
+80. Outlier Handling: Clipped 2061 outliers in 'src_ip_mac_1_var' using 1-99 percentiles
+
+81. Outlier Handling: Clipped 2052 outliers in 'channel_1_count' using 1-99 percentiles
+
+82. Outlier Handling: Clipped 2381 outliers in 'channel_1_mean' using 1-99 percentiles
+
+83. Outlier Handling: Clipped 2062 outliers in 'channel_1_var' using 1-99 percentiles
+
+84. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_1_sum' using 1-99 percentiles
+
+85. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_1_mean' using 1-99 percentiles
+
+86. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_1_var' using 1-99 percentiles
+
+87. Outlier Handling: Clipped 2055 outliers in 'stream_5_count' using 1-99 percentiles
+
+88. Outlier Handling: Clipped 2371 outliers in 'stream_5_mean' using 1-99 percentiles
+
+89. Outlier Handling: Clipped 2062 outliers in 'stream_5_var' using 1-99 percentiles
+
+90. Outlier Handling: Clipped 2058 outliers in 'src_ip_5_count' using 1-99 percentiles
+
+91. Outlier Handling: Clipped 2325 outliers in 'src_ip_5_mean' using 1-99 percentiles
+
+92. Outlier Handling: Clipped 2062 outliers in 'src_ip_5_var' using 1-99 percentiles
+
+93. Outlier Handling: Clipped 2058 outliers in 'src_ip_mac_5_count' using 1-99 percentiles
+
+94. Outlier Handling: Clipped 2327 outliers in 'src_ip_mac_5_mean' using 1-99 percentiles
+
+95. Outlier Handling: Clipped 2062 outliers in 'src_ip_mac_5_var' using 1-99 percentiles
+
+96. Outlier Handling: Clipped 2052 outliers in 'channel_5_count' using 1-99 percentiles
+
+97. Outlier Handling: Clipped 2368 outliers in 'channel_5_mean' using 1-99 percentiles
+
+98. Outlier Handling: Clipped 2062 outliers in 'channel_5_var' using 1-99 percentiles
+
+99. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_5_sum' using 1-99 percentiles
+
+100. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_5_mean' using 1-99 percentiles
+
+101. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_5_var' using 1-99 percentiles
+
+102. Outlier Handling: Clipped 2039 outliers in 'stream_10_count' using 1-99 percentiles
+
+103. Outlier Handling: Clipped 2364 outliers in 'stream_10_mean' using 1-99 percentiles
+
+104. Outlier Handling: Clipped 2062 outliers in 'stream_10_var' using 1-99 percentiles
+
+105. Outlier Handling: Clipped 2058 outliers in 'src_ip_10_count' using 1-99 percentiles
+
+106. Outlier Handling: Clipped 2254 outliers in 'src_ip_10_mean' using 1-99 percentiles
+
+107. Outlier Handling: Clipped 2062 outliers in 'src_ip_10_var' using 1-99 percentiles
+
+108. Outlier Handling: Clipped 2058 outliers in 'src_ip_mac_10_count' using 1-99 percentiles
+
+109. Outlier Handling: Clipped 2256 outliers in 'src_ip_mac_10_mean' using 1-99 percentiles
+
+110. Outlier Handling: Clipped 2062 outliers in 'src_ip_mac_10_var' using 1-99 percentiles
+
+111. Outlier Handling: Clipped 2062 outliers in 'channel_10_count' using 1-99 percentiles
+
+112. Outlier Handling: Clipped 2349 outliers in 'channel_10_mean' using 1-99 percentiles
+
+113. Outlier Handling: Clipped 2062 outliers in 'channel_10_var' using 1-99 percentiles
+
+114. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_10_sum' using 1-99 percentiles
+
+115. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_10_mean' using 1-99 percentiles
+
+116. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_10_var' using 1-99 percentiles
+
+117. Outlier Handling: Clipped 2053 outliers in 'stream_30_count' using 1-99 percentiles
+
+118. Outlier Handling: Clipped 4087 outliers in 'stream_30_mean' using 1-99 percentiles
+
+119. Outlier Handling: Clipped 2062 outliers in 'stream_30_var' using 1-99 percentiles
+
+120. Outlier Handling: Clipped 2057 outliers in 'src_ip_30_count' using 1-99 percentiles
+
+121. Outlier Handling: Clipped 4124 outliers in 'src_ip_30_mean' using 1-99 percentiles
+
+122. Outlier Handling: Clipped 2062 outliers in 'src_ip_30_var' using 1-99 percentiles
+
+123. Outlier Handling: Clipped 2057 outliers in 'src_ip_mac_30_count' using 1-99 percentiles
+
+124. Outlier Handling: Clipped 2217 outliers in 'src_ip_mac_30_mean' using 1-99 percentiles
+
+125. Outlier Handling: Clipped 2062 outliers in 'src_ip_mac_30_var' using 1-99 percentiles
+
+126. Outlier Handling: Clipped 2056 outliers in 'channel_30_count' using 1-99 percentiles
+
+127. Outlier Handling: Clipped 4123 outliers in 'channel_30_mean' using 1-99 percentiles
+
+128. Outlier Handling: Clipped 2062 outliers in 'channel_30_var' using 1-99 percentiles
+
+129. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_30_sum' using 1-99 percentiles
+
+130. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_30_mean' using 1-99 percentiles
+
+131. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_30_var' using 1-99 percentiles
+
+132. Outlier Handling: Clipped 2061 outliers in 'stream_60_count' using 1-99 percentiles
+
+133. Outlier Handling: Clipped 4028 outliers in 'stream_60_mean' using 1-99 percentiles
+
+134. Outlier Handling: Clipped 2062 outliers in 'stream_60_var' using 1-99 percentiles
+
+135. Outlier Handling: Clipped 3112 outliers in 'src_ip_60_count' using 1-99 percentiles
+
+136. Outlier Handling: Clipped 4026 outliers in 'src_ip_60_mean' using 1-99 percentiles
+
+137. Outlier Handling: Clipped 2062 outliers in 'src_ip_60_var' using 1-99 percentiles
+
+138. Outlier Handling: Clipped 3530 outliers in 'src_ip_mac_60_count' using 1-99 percentiles
+
+139. Outlier Handling: Clipped 2206 outliers in 'src_ip_mac_60_mean' using 1-99 percentiles
+
+140. Outlier Handling: Clipped 2062 outliers in 'src_ip_mac_60_var' using 1-99 percentiles
+
+141. Outlier Handling: Clipped 4031 outliers in 'channel_60_count' using 1-99 percentiles
+
+142. Outlier Handling: Clipped 4030 outliers in 'channel_60_mean' using 1-99 percentiles
+
+143. Outlier Handling: Clipped 2062 outliers in 'channel_60_var' using 1-99 percentiles
+
+144. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_60_sum' using 1-99 percentiles
+
+145. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_60_mean' using 1-99 percentiles
+
+146. Outlier Handling: Clipped 4124 outliers in 'stream_jitter_60_var' using 1-99 percentiles
+
+147. Outlier Handling: Clipped 462 outliers in 'ntp_interval' using 1-99 percentiles
+
+148. Outlier Handling: Clipped 3779 outliers in 'most_freq_spot' using 1-99 percentiles
+
+149. Outlier Handling: Clipped 1053 outliers in 'min_et' using 1-99 percentiles
+
+150. Outlier Handling: Clipped 873 outliers in 'q1' using 1-99 percentiles
+
+151. Outlier Handling: Clipped 1053 outliers in 'min_e' using 1-99 percentiles
+
+152. Outlier Handling: Clipped 2062 outliers in 'var_e' using 1-99 percentiles
+
+153. Outlier Handling: Clipped 873 outliers in 'q1_e' using 1-99 percentiles
+
+154. Outlier Handling: Clipped 4066 outliers in 'sum_p' using 1-99 percentiles
+
+155. Outlier Handling: Clipped 6 outliers in 'min_p' using 1-99 percentiles
+
+156. Outlier Handling: Clipped 3848 outliers in 'max_p' using 1-99 percentiles
+
+157. Outlier Handling: Clipped 1177 outliers in 'med_p' using 1-99 percentiles
+
+158. Outlier Handling: Clipped 4066 outliers in 'average_p' using 1-99 percentiles
+
+159. Outlier Handling: Clipped 2061 outliers in 'var_p' using 1-99 percentiles
+
+160. Outlier Handling: Clipped 957 outliers in 'q3_p' using 1-99 percentiles
+
+161. Outlier Handling: Clipped 227 outliers in 'q1_p' using 1-99 percentiles
+
+162. Outlier Handling: Clipped 1758 outliers in 'iqr_p' using 1-99 percentiles
+
+163. Outlier Handling: Clipped 3535 outliers in 'l3_ip_dst_count' using 1-99 percentiles
+
+164. Categorical Encoding: Label encoded 'src_mac' (81 categories -> 1 feature)
+
+165. Categorical Encoding: Label encoded 'dst_mac' (95 categories -> 1 feature)
+
+166. Categorical Encoding: Label encoded 'src_ip' (1031 categories -> 1 feature)
+
+167. Categorical Encoding: Label encoded 'dst_ip' (1044 categories -> 1 feature)
+
+168. Categorical Encoding: One-hot encoded 'handshake_version' (3 categories -> 3 features)
+
+169. Categorical Encoding: Label encoded 'tls_server' (53 categories -> 1 feature)
+
+170. Categorical Encoding: One-hot encoded 'http_request_method' (4 categories -> 4 features)
+
+171. Categorical Encoding: One-hot encoded 'http_host' (1 categories -> 1 features)
+
+172. Categorical Encoding: Label encoded 'user_agent' (88 categories -> 1 feature)
+
+173. Categorical Encoding: Label encoded 'dns_server' (200 categories -> 1 feature)
+
+174. Categorical Encoding: Label encoded 'device_mac' (82 categories -> 1 feature)
+
+175. Categorical Encoding: Label encoded 'eth_src_oui' (36 categories -> 1 feature)
+
+176. Categorical Encoding: Label encoded 'eth_dst_oui' (38 categories -> 1 feature)
+
+177. Categorical Encoding: Label encoded 'highest_layer' (39 categories -> 1 feature)
+
+178. Categorical Encoding: Label encoded 'http_uri' (193 categories -> 1 feature)
+
+179. Categorical Encoding: One-hot encoded 'http_content_type' (8 categories -> 8 features)
+
+180. Feature Scaling: Applied MinMaxScaler - features scaled to [0,1] range
+
+181. Correlation Filtering: Removed 60 highly correlated features (>0.95)
+
+182. Feature Filtering: Removed 81 problematic features, kept 66
+
+183. Dataset Creation: Created autoencoder-specific datasets: AE_train=120,000, Val=43,100, Test=43,100
+
+🔧 TECHNICAL JUSTIFICATIONS:
+--------------------------------------------------
+• Missing Values: Statistical imputation preserving data distribution
+• Outlier Treatment: Conservative percentile clipping (1%-99%)
+• Feature Scaling: Input normalization for stable autoencoder training
+• Dimensionality: Balanced reduction maintaining reconstruction quality
+• Data Splits: Unsupervised AE training + supervised hybrid validation
+
+🔍 FINAL FEATURE INFORMATION:
+--------------------------------------------------
+• Final feature count: 66
+• Removed features: 81
+• Encoding methods used: 16 categorical features
+
+📅 Generated on: 2025-08-24 13:41:52.563235
